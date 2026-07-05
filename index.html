@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora PERME & BORG</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="app-header">
+    <img src="assets/hospital-logo.png" alt="Hospital Los Cobos Medical Center" class="logo">
+    <h1>Calculadora PERME & BORG</h1>
+    <p class="subtitle">Herramienta para fisioterapia cardiorrespiratoria</p>
+  </header>
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <main class="container">
+
+    <!-- SECCIÓN PERME -->
+    <section id="perme-form" class="form-section">
+      <h2>PERME ICU Mobility Score</h2>
+      <p class="section-description">
+        Complete los siguientes 15 ítems para obtener el puntaje total (0–32).
+      </p>
+
+      <!-- ESTADO MENTAL -->
+      <h3>1. Estado Mental (máx 3 puntos)</h3>
+
+      <label for="item1">1. Nivel de alerta a la llegada</label>
+      <select id="item1" class="perme-item">
+        <option value="0">No responde (0)</option>
+        <option value="1">Letárgico (1)</option>
+        <option value="2">Despierto y alerta (2)</option>
+      </select>
+
+      <label for="item2">2. ¿Puede seguir 2 de 3 comandos?</label>
+      <select id="item2" class="perme-item">
+        <option value="0">No (0)</option>
+        <option value="1">Sí (1)</option>
+      </select>
+
+      <!-- POTENCIALES BARRERAS -->
+      <h3>2. Barreras a la Movilidad (máx 4 puntos)</h3>
+
+      <label for="item3">3. Ventilación mecánica o no invasiva</label>
+      <select id="item3" class="perme-item">
+        <option value="0">Sí (0)</option>
+        <option value="1">No (1)</option>
+      </select>
+
+      <label for="item4">4. Dolor</label>
+      <select id="item4" class="perme-item">
+        <option value="0">Tiene dolor o no puede determinarlo (0)</option>
+        <option value="1">Ausencia de dolor (1)</option>
+      </select>
+
+      <label for="item5">5. ¿Tiene ≥ 2 dispositivos invasivos?</label>
+      <select id="item5" class="perme-item">
+        <option value="0">Sí (0)</option>
+        <option value="1">No (1)</option>
+      </select>
+
+      <label for="item6">6. ¿Tiene goteo intravenoso continuo?</label>
+      <select id="item6" class="perme-item">
+        <option value="0">Sí (0)</option>
+        <option value="1">No (1)</option>
+      </select>
+
+      <!-- FUERZA FUNCIONAL -->
+      <h3>3. Fuerza Funcional (máx 4 puntos)</h3>
+
+      <label for="item7">7. Piernas: levantar 20° contra gravedad</label>
+      <select id="item7" class="perme-item">
+        <option value="0">No (0)</option>
+        <option value="1">Sí (1)</option>
+      </select>
+
+      <label for="item8">8. Brazos: levantar 45° contra gravedad</label>
+      <select id="item8" class="perme-item">
+        <option value="0">No (0)</option>
+        <option value="1">Sí (1)</option>
+      </select>
+
+      <!-- MOVILIDAD EN CAMA -->
+      <h3>4. Movilidad en Cama (máx 6 puntos)</h3>
+
+      <label for="item9">9. De supino a sentado</label>
+      <select id="item9" class="perme-item">
+        <option value="0">Asistencia total (0)</option>
+        <option value="1">Asistencia máxima (1)</option>
+        <option value="2">Asistencia moderada (2)</option>
+        <option value="3">Asistencia mínima o supervisión (3)</option>
+      </select>
+
+      <label for="item10">10. Equilibrio estático sentado</label>
+      <select id="item10" class="perme-item">
+        <option value="0">Asistencia total (0)</option>
+        <option value="1">Asistencia máxima (1)</option>
+        <option value="2">Asistencia moderada (2)</option>
+        <option value="3">Asistencia mínima o supervisión (3)</option>
+      </select>
+
+      <!-- TRANSFERENCIAS -->
+      <h3>5. Transferencias (máx 9 puntos)</h3>
+
+      <label for="item11">11. Sentado a parado</label>
+      <select id="item11" class="perme-item">
+        <option value="0">Asistencia total (0)</option>
+        <option value="1">Asistencia máxima (1)</option>
+        <option value="2">Asistencia moderada (2)</option>
+        <option value="3">Asistencia mínima o supervisión (3)</option>
+      </select>
+
+      <label for="item12">12. Equilibrio estático parado</label>
+      <select id="item12" class="perme-item">
+        <option value="0">Asistencia total (0)</option>
+        <option value="1">Asistencia máxima (1)</option>
+        <option value="2">Asistencia moderada (2)</option>
+        <option value="3">Asistencia mínima o supervisión (3)</option>
+      </select>
+
+      <label for="item13">13. Transferencia cama ↔ silla</label>
+      <select id="item13" class="perme-item">
+        <option value="0">Asistencia total (0)</option>
+        <option value="1">Asistencia máxima (1)</option>
+        <option value="2">Asistencia moderada (2)</option>
+        <option value="3">Asistencia mínima o supervisión (3)</option>
+      </select>
+
+      <!-- MARCHA -->
+      <h3>6. Marcha (máx 3 puntos)</h3>
+
+      <label for="item14">14. Marcha</label>
+      <select id="item14" class="perme-item">
+        <option value="0">Asistencia total (0)</option>
+        <option value="1">Asistencia máxima (1)</option>
+        <option value="2">Asistencia moderada (2)</option>
+        <option value="3">Asistencia mínima o supervisión (3)</option>
+      </select>
+
+      <!-- RESISTENCIA -->
+      <h3>7. Resistencia (máx 3 puntos)</h3>
+
+      <label for="item15">15. Distancia caminada en 2 minutos</label>
+      <select id="item15" class="perme-item">
+        <option value="0">Incapacidad para caminar (0)</option>
+        <option value="1">1.5 a 15 m (1)</option>
+        <option value="2">15 a 30 m (2)</option>
+        <option value="3">≥ 30 m (3)</option>
+      </select>
+
+      <!-- BOTÓN -->
+      <button id="calcular-perme" class="btn-primary">Calcular Puntaje PERME</button>
+
+      <!-- RESULTADO -->
+      <div id="resultado-perme" class="resultado"></div>
+    </section>
+
+    <!-- FUTURA SECCIÓN BORG -->
+    <section id="borg-form" class="form-section"></section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
