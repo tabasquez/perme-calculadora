@@ -1,4 +1,27 @@
 /* ---------------------------------------------------------
+   PERME SCORE
+--------------------------------------------------------- */
+function calcularPERME() {
+  // Si no estamos en la página PERME, salir
+  if (!document.getElementById("perme1")) return;
+
+  const ids = [
+    "perme1","perme2","perme3","perme4","perme5",
+    "perme6","perme7","perme8","perme9","perme10",
+    "perme11","perme12","perme13","perme14","perme15"
+  ];
+
+  const valores = ids.map(id => Number(document.getElementById(id).value || 0));
+  const total = valores.reduce((a, b) => a + b, 0);
+
+  document.getElementById("resultado-perme").innerHTML = `
+    <h3>Puntaje PERME: ${total}</h3>
+    <p>Interpretar según protocolo institucional.</p>
+  `;
+}
+
+
+/* ---------------------------------------------------------
    GLASGOW
 --------------------------------------------------------- */
 function calcularGlasgow() {
