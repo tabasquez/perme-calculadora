@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MRC Sum Score</title>
+  <link rel="stylesheet" href="styles.css?v=1">
+</head>
+
+<body>
+
+  <header class="app-header">
+    <img src="assets/hospital-logo.png" alt="Hospital Los Cobos Medical Center" class="logo">
+    <h1>MRC Sum Score</h1>
+    <p class="subtitle">Evaluación de fuerza muscular</p>
+  </header>
+
+  <main class="container">
+
+    <section class="form-section">
+      <h2>MRC Sum Score (0–60)</h2>
+      <p class="section-description">
+        Evalúe cada grupo muscular de 0 a 5 en ambos lados.
+      </p>
+
+      <div class="mrc-grid">
+        <div></div>
+        <div><strong>Derecho</strong></div>
+        <div><strong>Izquierdo</strong></div>
+
+        <label>Abducción del hombro</label>
+        <input type="number" id="mrc1d" min="0" max="5" value="0">
+        <input type="number" id="mrc1i" min="0" max="5" value="0">
+
+        <label>Flexión del codo</label>
+        <input type="number" id="mrc2d" min="0" max="5" value="0">
+        <input type="number" id="mrc2i" min="0" max="5" value="0">
+
+        <label>Extensión de la muñeca</label>
+        <input type="number" id="mrc3d" min="0" max="5" value="0">
+        <input type="number" id="mrc3i" min="0" max="5" value="0">
+
+        <label>Flexión de la cadera</label>
+        <input type="number" id="mrc4d" min="0" max="5" value="0">
+        <input type="number" id="mrc4i" min="0" max="5" value="0">
+
+        <label>Extensión de la rodilla</label>
+        <input type="number" id="mrc5d" min="0" max="5" value="0">
+        <input type="number" id="mrc5i" min="0" max="5" value="0">
+
+        <label>Dorsiflexión del tobillo</label>
+        <input type="number" id="mrc6d" min="0" max="5" value="0">
+        <input type="number" id="mrc6i" min="0" max="5" value="0">
+      </div>
+
+      <button class="btn-primary" onclick="calcularMRC()">Calcular MRC</button>
+
+      <div id="resultado-mrc" class="resultado"></div>
+    </section>
+
+    <!-- BOTÓN VOLVER -->
+    <section class="form-section">
+      <a href="index.html" class="btn-primary" style="display:block; text-align:center;">
+        Volver al menú principal
+      </a>
+    </section>
+
+  </main>
+
+  <!-- ✔ Enlace correcto al JS -->
+  <script src="script.js"></script>
+</body>
+</html>

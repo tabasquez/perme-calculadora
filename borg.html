@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Borg Modificada</title>
+  <link rel="stylesheet" href="styles.css?v=1">
+</head>
+
+<body>
+
+  <header class="app-header">
+    <img src="assets/hospital-logo.png" alt="Hospital Los Cobos Medical Center" class="logo">
+    <h1>Borg Modificada</h1>
+    <p class="subtitle">Percepción subjetiva del esfuerzo</p>
+  </header>
+
+  <main class="container">
+
+    <section class="form-section">
+      <h2>Escala de Borg Modificada (0–10)</h2>
+      <p class="section-description">
+        Seleccione el nivel de esfuerzo percibido por el paciente.
+      </p>
+
+      <label for="borg-select">Nivel Borg</label>
+      <select id="borg-select">
+        <option value="0">Nada en absoluto</option>
+        <option value="0.5">Muy muy ligero (apenas perceptible)</option>
+        <option value="1">Muy ligero</option>
+        <option value="2">Ligero</option>
+        <option value="3">Moderado</option>
+        <option value="4">Algo duro</option>
+        <option value="5">Duro (pesado)</option>
+        <option value="6">Muy duro</option>
+        <option value="7">Muy muy duro</option>
+        <option value="8">Casi máximo</option>
+        <option value="9">Máximo</option>
+        <option value="10">Esfuerzo extremo / Agotamiento total</option>
+      </select>
+
+      <button class="btn-primary" onclick="calcularBorgModificada()">Calcular Borg</button>
+
+      <div id="resultado-borg" class="resultado"></div>
+    </section>
+
+    <!-- BOTÓN VOLVER -->
+    <section class="form-section">
+      <a href="index.html" class="btn-primary" style="display:block; text-align:center;">
+        Volver al menú principal
+      </a>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

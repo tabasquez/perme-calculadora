@@ -1,4 +1,41 @@
 /* =========================
+   PAGINA PRINCIPAL
+   ========================= */
+
+.menu-section {
+  background: #ffffff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.08);
+  margin-bottom: 2rem;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.menu-item {
+  display: block;
+  padding: 1rem;
+  background: #f0f5ff;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: 600;
+  color: #0a4a7a;
+  text-decoration: none;
+  border: 1px solid #c3dafe;
+  transition: 0.2s;
+}
+
+.menu-item:hover {
+  background: #dce8ff;
+}
+
+
+
+/* =========================
    BASE
    ========================= */
 
@@ -208,3 +245,14 @@ select:focus {
     text-align: center;
   }
 }
+
+/* =========================
+   Doble columna MRC
+   ========================= */
+.mrc-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 0.7fr 0.7fr;
+  gap: 0.8rem 1rem;
+  align-items: center;
+}
+

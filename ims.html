@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ICU Mobility Scale</title>
+  <link rel="stylesheet" href="styles.css?v=1">
+</head>
+
+<body>
+
+  <header class="app-header">
+    <img src="assets/hospital-logo.png" alt="Hospital Los Cobos Medical Center" class="logo">
+    <h1>ICU Mobility Scale</h1>
+    <p class="subtitle">Evaluación de movilidad en UCI</p>
+  </header>
+
+  <main class="container">
+
+    <section class="form-section">
+      <h2>ICU Mobility Scale (IMS)</h2>
+      <p class="section-description">
+        Seleccione el nivel de movilidad que mejor describe la condición del paciente.
+      </p>
+
+      <label for="ims-select">Nivel IMS</label>
+      <select id="ims-select">
+        <option value="0">Nada (tumbado en la cama)</option>
+        <option value="1">Ejercicios en cama</option>
+        <option value="2">Traslado pasivo a silla</option>
+        <option value="3">Sentado en el borde de la cama</option>
+        <option value="4">De pie</option>
+        <option value="5">Transferencia activa cama ↔ silla</option>
+        <option value="6">Marcha en el sitio (junto a la cama)</option>
+        <option value="7">Marcha con ayuda de 2 personas</option>
+        <option value="8">Marcha con ayuda de 1 persona</option>
+        <option value="9">Marcha independiente con ayuda para la marcha</option>
+        <option value="10">Marcha independiente sin ayuda</option>
+      </select>
+
+      <button class="btn-primary" onclick="calcularIMS()">Calcular IMS</button>
+
+      <div id="resultado-ims" class="resultado"></div>
+    </section>
+
+    <!-- BOTÓN VOLVER -->
+    <section class="form-section">
+      <a href="index.html" class="btn-primary" style="display:block; text-align:center;">
+        Volver al menú principal
+      </a>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

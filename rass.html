@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escala RASS</title>
+  <link rel="stylesheet" href="styles.css?v=1">
+</head>
+
+<body>
+
+  <header class="app-header">
+    <img src="assets/hospital-logo.png" alt="Hospital Los Cobos Medical Center" class="logo">
+    <h1>Escala RASS</h1>
+    <p class="subtitle">Evaluación del nivel de sedación y agitación</p>
+  </header>
+
+  <main class="container">
+
+    <section class="form-section">
+      <h2>Richmond Agitation-Sedation Scale (RASS)</h2>
+      <p class="section-description">
+        Seleccione el nivel que mejor describe el estado del paciente.
+      </p>
+
+      <label for="rass-select">Nivel RASS</label>
+      <select id="rass-select">
+        <option value="4">Combativo — violento, peligro inmediato</option>
+        <option value="3">Muy agitado — agresivo, intenta retirar tubos</option>
+        <option value="2">Agitado — movimientos frecuentes sin propósito</option>
+        <option value="1">Inquieto — ansioso, sin agresión</option>
+        <option value="0">Despierto y tranquilo</option>
+        <option value="-1">Somnoliento — despierta &gt;10 segundos</option>
+        <option value="-2">Sedación leve — contacto visual &lt;10 segundos</option>
+        <option value="-3">Sedación moderada — abre ojos a la voz</option>
+        <option value="-4">Sedación profunda — abre ojos al estímulo físico</option>
+        <option value="-5">Sin respuesta — no responde a voz ni estímulo físico</option>
+      </select>
+
+      <button class="btn-primary" onclick="calcularRass()">Calcular RASS</button>
+
+      <div id="resultado-rass" class="resultado"></div>
+    </section>
+
+    <!-- BOTÓN VOLVER -->
+    <section class="form-section">
+      <a href="index.html" class="btn-primary" style="display:block; text-align:center;">
+        Volver al menú principal
+      </a>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

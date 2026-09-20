@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escala de Glasgow</title>
+  <link rel="stylesheet" href="styles.css?v=1">
+</head>
+
+<body>
+
+  <header class="app-header">
+    <img src="assets/hospital-logo.png" alt="Hospital Los Cobos Medical Center" class="logo">
+    <h1>Escala de Glasgow</h1>
+    <p class="subtitle">Evaluación neurológica</p>
+  </header>
+
+  <main class="container">
+
+    <section class="form-section">
+      <h2>Glasgow Coma Scale</h2>
+      <p class="section-description">
+        Seleccione la respuesta del paciente en cada categoría.
+      </p>
+
+      <!-- RESPUESTA OCULAR -->
+      <h3>Respuesta ocular</h3>
+      <label for="g-ocular">Seleccione una opción</label>
+      <select id="g-ocular">
+        <option value="4">Espontánea (4)</option>
+        <option value="3">Tras orden verbal (3)</option>
+        <option value="2">Tras estímulo doloroso (2)</option>
+        <option value="1">Ninguna (1)</option>
+      </select>
+
+      <!-- RESPUESTA VERBAL -->
+      <h3>Respuesta verbal</h3>
+      <label for="g-verbal">Seleccione una opción</label>
+      <select id="g-verbal">
+        <option value="5">Orientado (5)</option>
+        <option value="4">Confuso (4)</option>
+        <option value="3">Palabras (3)</option>
+        <option value="2">Sonidos (2)</option>
+        <option value="1">Ninguna (1)</option>
+      </select>
+
+      <!-- RESPUESTA MOTORA -->
+      <h3>Respuesta motora</h3>
+      <label for="g-motora">Seleccione una opción</label>
+      <select id="g-motora">
+        <option value="6">Obedece comandos (6)</option>
+        <option value="5">Localiza el dolor (5)</option>
+        <option value="4">Flexión normal (4)</option>
+        <option value="3">Flexión anormal (3)</option>
+        <option value="2">Extensión anormal (2)</option>
+        <option value="1">Ninguna (1)</option>
+      </select>
+
+      <button class="btn-primary" onclick="calcularGlasgow()">Calcular Glasgow</button>
+
+      <div id="resultado-glasgow" class="resultado"></div>
+    </section>
+
+    <!-- BOTÓN VOLVER -->
+    <section class="form-section">
+      <a href="index.html" class="btn-primary" style="display:block; text-align:center;">
+        Volver al menú principal
+      </a>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
