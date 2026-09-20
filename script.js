@@ -23,12 +23,23 @@ function calcularPERME() {
     }
   });
 
+  // Interpretación clínica según protocolo Los Cobos
+  let interpretacion = "";
+
+  if (total >= 0 && total <= 7) {
+    interpretacion = "Movilidad muy baja — paciente sedado o con múltiples dispositivos, requiere asistencia total.";
+  } else if (total >= 8 && total <= 22) {
+    interpretacion = "Movilidad moderada — control de tronco, fuerza de piernas, movilización activo-asistida.";
+  } else if (total >= 23 && total <= 32) {
+    interpretacion = "Movilidad alta — independencia funcional, pocas barreras externas.";
+  }
+
   // Mostrar resultado
-  const salida = document.getElementById("resultado-perme");
-  if (salida) {
-    salida.innerHTML = `
+  const resultado = document.getElementById("resultado-perme");
+  if (resultado) {
+    resultado.innerHTML = `
       <h3>Puntaje PERME: ${total} / 32</h3>
-      <p>Interpretar según protocolo institucional.</p>
+      <p>${interpretacion}</p>
     `;
   }
 }
@@ -38,6 +49,7 @@ const btnPerme = document.getElementById("calcular-perme");
 if (btnPerme) {
   btnPerme.addEventListener("click", calcularPERME);
 }
+
 
 
 
