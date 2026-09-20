@@ -1,91 +1,19 @@
-// ===============================
-// CALCULAR PERME ICU MOBILITY SCORE
-// ===============================
-
-function calcularPerme() {
-  let total = 0;
-
-  // Selecciona todos los selects del formulario PERME
-  const items = document.querySelectorAll(".perme-item");
-
-  items.forEach(item => {
-    total += Number(item.value);
-  });
-
-  // Interpretación clínica según protocolo Los Cobos
-  let interpretacion = "";
-
-  if (total >= 0 && total <= 7) {
-    interpretacion = "Movilidad muy baja — paciente sedado o con múltiples dispositivos, requiere asistencia total.";
-  } else if (total >= 8 && total <= 22) {
-    interpretacion = "Movilidad moderada — control de tronco, fuerza de piernas, movilización activo-asistida.";
-  } else if (total >= 23 && total <= 32) {
-    interpretacion = "Movilidad alta — independencia funcional, pocas barreras externas.";
-  }
-
-  // Mostrar resultado
-  const resultado = document.getElementById("resultado-perme");
-  resultado.innerHTML = `
-    <h3>Puntaje PERME: ${total} / 32</h3>
-    <p>${interpretacion}</p>
-  `;
-}
-
-// Activar cálculo al presionar el botón
-document.getElementById("calcular-perme").addEventListener("click", calcularPerme);
-
-
-// ===============================
-// CALCULAR BORG CR10
-// ===============================
-
-function calcularBorg() {
-  const valor = Number(document.getElementById("borg-input").value);
-
-  const interpretaciones = {
-    0: "Nada de esfuerzo",
-    1: "Muy ligero",
-    2: "Ligero",
-    3: "Moderado",
-    4: "Algo intenso",
-    5: "Intenso",
-    6: "Muy intenso",
-    7: "Extremadamente intenso",
-    8: "Casi máximo",
-    9: "Máximo",
-    10: "Esfuerzo extremo"
-  };
-
-  const resultado = document.getElementById("resultado-borg");
-  resultado.innerHTML = `
-    <h3>BORG CR10: ${valor}</h3>
-    <p>${interpretaciones[valor]}</p>
-  `;
-}
-
-// Activar cálculo al presionar el botón
-document.getElementById("calcular-borg").addEventListener("click", calcularBorg);
-
-// ===============================
-// CALCULAR Glasgow
-// ===============================
-
+/* ---------------------------------------------------------
+   GLASGOW
+--------------------------------------------------------- */
 function calcularGlasgow() {
-  const ocular = Number(document.getElementById("g-ocular").value);
-  const verbal = Number(document.getElementById("g-verbal").value);
-  const motora = Number(document.getElementById("g-motora").value);
+  const ocular = document.getElementById("g-ocular");
+  const verbal = document.getElementById("g-verbal");
+  const motora = document.getElementById("g-motora");
 
-  const total = ocular + verbal + motora;
+  if (!ocular || !verbal || !motora) return;
+
+  const total = Number(ocular.value) + Number(verbal.value) + Number(motora.value);
 
   let interpretacion = "";
-
-  if (total >= 3 && total <= 8) {
-    interpretacion = "Coma: Daño neurológico grave, requiere intubación.";
-  } else if (total >= 9 && total <= 12) {
-    interpretacion = "Lesión cerebral moderada, requiere vigilancia y posible ingreso.";
-  } else if (total >= 13 && total <= 15) {
-    interpretacion = "Paciente despierto, responde rápido o casi normal.";
-  }
+  if (total <= 8) interpretacion = "Coma: Daño neurológico grave, requiere intubación.";
+  else if (total <= 12) interpretacion = "Lesión cerebral moderada, requiere vigilancia.";
+  else interpretacion = "Paciente despierto, responde rápido o casi normal.";
 
   document.getElementById("resultado-glasgow").innerHTML = `
     <h3>Puntaje Glasgow: ${total} / 15</h3>
@@ -93,47 +21,31 @@ function calcularGlasgow() {
   `;
 }
 
-// ===============================
-// CALCULAR RASS
-// ===============================
 
+/* ---------------------------------------------------------
+   RASS
+--------------------------------------------------------- */
 function calcularRass() {
-  const valor = Number(document.getElementById("rass-select").value);
+  const select = document.getElementById("rass-select");
+  if (!select) return;
 
+  const valor = Number(select.value);
   let descripcion = "";
 
-  switch (valor) {
-    case 4:
-      descripcion = "+4";
-      break;
-    case 3:
-      descripcion = "+3";
-      break;
-    case 2:
-      descripcion = "+2";
-      break;
-    case 1:
-      descripcion = "+1";
-      break;
-    case 0:
-      descripcion = "0";
-      break;
-    case -1:
-      descripcion = "-1";
-      break;
-    case -2:
-      descripcion = "-2";
-      break;
-    case -3:
-      descripcion = "-3";
-      break;
-    case -4:
-      descripcion = "-4";
-      break;
-    case -5:
-      descripcion = "-5";
-      break;
-  }
+  const textos = {
+    4: "Combativo — violento, peligro inmediato.",
+    3: "Muy agitado — agresivo, intenta retirar tubos.",
+    2: "Agitado — movimientos sin propósito.",
+    1: "Inquieto — ansioso, sin agresión.",
+    0: "Despierto y tranquilo.",
+    "-1": "Somnoliento — despierta >10 segundos.",
+    "-2": "Sedación leve — contacto visual <10 segundos.",
+    "-3": "Sedación moderada — abre ojos a la voz.",
+    "-4": "Sedación profunda — responde al estímulo físico.",
+    "-5": "Sin respuesta — no responde a voz ni estímulo físico."
+  };
+
+  descripcion = textos[valor];
 
   document.getElementById("resultado-rass").innerHTML = `
     <h3>Puntaje RASS: ${valor}</h3>
@@ -141,147 +53,93 @@ function calcularRass() {
   `;
 }
 
-// ===============================
-// CALCULAR Borg modificada
-// ===============================
 
-
+/* ---------------------------------------------------------
+   BORG MODIFICADA
+--------------------------------------------------------- */
 function calcularBorgModificada() {
-  const valor = Number(document.getElementById("borg-select").value);
+  const select = document.getElementById("borg-select");
+  if (!select) return;
 
-  let descripcion = "";
+  const valor = Number(select.value);
 
-  switch (valor) {
-    case 0:
-      descripcion = "0";
-      break;
-    case 0.5:
-      descripcion = "0.5";
-      break;
-    case 1:
-      descripcion = "1";
-      break;
-    case 2:
-      descripcion = "2";
-      break;
-    case 3:
-      descripcion = "3";
-      break;
-    case 4:
-      descripcion = "4";
-      break;
-    case 5:
-      descripcion = "5";
-      break;
-    case 6:
-      descripcion = "6";
-      break;
-    case 7:
-      descripcion = "7";
-      break;
-    case 8:
-      descripcion = "8";
-      break;
-    case 9:
-      descripcion = "9";
-      break;
-    case 10:
-      descripcion = "10";
-      break;
-  }
+  const textos = {
+    0: "Nada en absoluto.",
+    0.5: "Muy muy ligero (apenas perceptible).",
+    1: "Muy ligero.",
+    2: "Ligero.",
+    3: "Moderado.",
+    4: "Algo duro.",
+    5: "Duro (pesado).",
+    6: "Muy duro.",
+    7: "Muy muy duro.",
+    8: "Casi máximo.",
+    9: "Máximo.",
+    10: "Esfuerzo extremo / Agotamiento total."
+  };
 
   document.getElementById("resultado-borg").innerHTML = `
     <h3>Borg Modificada: ${valor}</h3>
-    <p>${descripcion}</p>
+    <p>${textos[valor]}</p>
   `;
 }
 
 
-// ===============================
-// CALCULAR IMS
-// ===============================
-
+/* ---------------------------------------------------------
+   ICU MOBILITY SCALE (IMS)
+--------------------------------------------------------- */
 function calcularIMS() {
-  const valor = Number(document.getElementById("ims-select").value);
+  const select = document.getElementById("ims-select");
+  if (!select) return;
 
-  let descripcion = "";
+  const valor = Number(select.value);
 
-  switch (valor) {
-    case 0:
-      descripcion = "0";
-      break;
-    case 1:
-      descripcion = "1";
-      break;
-    case 2:
-      descripcion = "2";
-      break;
-    case 3:
-      descripcion = "3";
-      break;
-    case 4:
-      descripcion = "4";
-      break;
-    case 5:
-      descripcion = "5";
-      break;
-    case 6:
-      descripcion = "6";
-      break;
-    case 7:
-      descripcion = "7";
-      break;
-    case 8:
-      descripcion = "8";
-      break;
-    case 9:
-      descripcion = "9";
-      break;
-    case 10:
-      descripcion = "10";
-      break;
-  }
+  const textos = {
+    0: "Nada — paciente permanece pasivamente en la cama.",
+    1: "Ejercicios en cama — actividad sin salir del borde.",
+    2: "Traslado pasivo a silla.",
+    3: "Sentado en el borde de la cama.",
+    4: "De pie — soporta peso.",
+    5: "Transferencia activa cama ↔ silla.",
+    6: "Marcha en el sitio.",
+    7: "Marcha con ayuda de 2 personas.",
+    8: "Marcha con ayuda de 1 persona.",
+    9: "Marcha independiente con ayuda para la marcha.",
+    10: "Marcha independiente sin ayuda."
+  };
 
   document.getElementById("resultado-ims").innerHTML = `
     <h3>Nivel IMS: ${valor}</h3>
-    <p>${descripcion}</p>
+    <p>${textos[valor]}</p>
   `;
 }
 
 
-// ===============================
-// CALCULAR MRC
-// ===============================
-
+/* ---------------------------------------------------------
+   MRC (con resumen por lado)
+--------------------------------------------------------- */
 function calcularMRC() {
-  // IDs por lado
   const derechoIDs = ["mrc1d","mrc2d","mrc3d","mrc4d","mrc5d","mrc6d"];
   const izquierdoIDs = ["mrc1i","mrc2i","mrc3i","mrc4i","mrc5i","mrc6i"];
 
-  // Sumar lado derecho
+  // Si no estamos en la página MRC, salir
+  if (!document.getElementById("mrc1d")) return;
+
   const derecho = derechoIDs
     .map(id => Number(document.getElementById(id).value || 0))
     .reduce((a, b) => a + b, 0);
 
-  // Sumar lado izquierdo
   const izquierdo = izquierdoIDs
     .map(id => Number(document.getElementById(id).value || 0))
     .reduce((a, b) => a + b, 0);
 
-  // Total general
   const total = derecho + izquierdo;
 
-  // Interpretación oficial (según tu documento)
   let interpretacion = "";
-  if (total >= 48) {
-    interpretacion = "Fuerza general conservada.";
-  } else if (total < 48 && total >= 36) {
-    interpretacion = "Debilidad adquirida en UCI (ICU-AW).";
-  } else if (total < 36) {
-    interpretacion = "Debilidad severa / Tetraparesia funcional.";
-  }
+  if (total >= 48) interpretacion = "Fuerza general conservada.";
+  else if (total >= 36) interpretacion = "Debilidad adquirida en UCI (ICU-AW).";
+  else interpretacion = "Debilidad severa / Tetraparesia funcional.";
 
-  // Mostrar resultados
   document.getElementById("resultado-mrc").innerHTML = `
     <h3>Puntaje MRC Total: ${total} / 60</h3>
 
@@ -291,3 +149,4 @@ function calcularMRC() {
     <p>${interpretacion}</p>
   `;
 }
+
