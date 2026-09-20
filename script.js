@@ -1,24 +1,44 @@
 /* ---------------------------------------------------------
-   PERME SCORE
+   PERME ICU MOBILITY SCORE (IDs item1–item15)
 --------------------------------------------------------- */
 function calcularPERME() {
-  // Si no estamos en la página PERME, salir
-  if (!document.getElementById("perme1")) return;
 
+  // Detectar si estamos en la página PERME
+  const primerItem = document.getElementById("item1");
+  if (!primerItem) return; // No estamos en perme.html
+
+  // Lista de IDs reales según tu HTML
   const ids = [
-    "perme1","perme2","perme3","perme4","perme5",
-    "perme6","perme7","perme8","perme9","perme10",
-    "perme11","perme12","perme13","perme14","perme15"
+    "item1","item2","item3","item4","item5",
+    "item6","item7","item8","item9","item10",
+    "item11","item12","item13","item14","item15"
   ];
 
-  const valores = ids.map(id => Number(document.getElementById(id).value || 0));
-  const total = valores.reduce((a, b) => a + b, 0);
+  let total = 0;
 
-  document.getElementById("resultado-perme").innerHTML = `
-    <h3>Puntaje PERME: ${total}</h3>
-    <p>Interpretar según protocolo institucional.</p>
-  `;
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) {
+      total += Number(el.value || 0);
+    }
+  });
+
+  // Mostrar resultado
+  const salida = document.getElementById("resultado-perme");
+  if (salida) {
+    salida.innerHTML = `
+      <h3>Puntaje PERME: ${total} / 32</h3>
+      <p>Interpretar según protocolo institucional.</p>
+    `;
+  }
 }
+
+/* Activar botón PERME si existe */
+const btnPerme = document.getElementById("calcular-perme");
+if (btnPerme) {
+  btnPerme.addEventListener("click", calcularPERME);
+}
+
 
 
 /* ---------------------------------------------------------
